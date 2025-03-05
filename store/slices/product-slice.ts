@@ -1,6 +1,6 @@
 import { getAllProducts } from "@/api/product";
 import { Product } from "@/types/product";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "..";
 
 export const fetchProducts = createAsyncThunk("data/fetchData", async (_, { rejectWithValue }) => {
@@ -54,6 +54,17 @@ const productSlice = createSlice({
 export const getAllCategories = (state: RootState) => [
   ...new Set(state.products.items.map((product) => product.category)),
 ];
+
+export const getProductsByCategory = (state: RootState, category: string) => {
+  return state.products.items.filter((product) => product.category === category);
+};
+
+// This creates a memoized selector that will only recalculate when products or category changes
+export const makeSelectProductsByCategory = () => 
+  createSelector(
+    [(state: RootState) => state.products.items, (_: RootState, category: string) => category],
+    (products, category) => products.filter(product => product.category === category)
+  );
 
 export const { clearState } = productSlice.actions
 export default productSlice.reducer;
