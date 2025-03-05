@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Form from "next/form";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classnames";
 
 type HeaderProps = {
   className?: string;
