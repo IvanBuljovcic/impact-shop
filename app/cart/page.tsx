@@ -1,5 +1,7 @@
+import CartView from "@/components/Cart/cart-view";
+
 const CartPage = () => {
-  return <h1>Cart page</h1>;
+  return <CartView />;
 };
 
 export default CartPage;
