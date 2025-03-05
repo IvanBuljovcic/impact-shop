@@ -2,6 +2,7 @@ import Link from "next/link";
 import ProductImage from "./product-image";
 import { Product } from "@/types/product";
 import RatingStars from "../rating-stars";
+import ProductPrice from "./product-price";
 
 type ProductCardProps = {
   product: Product;
@@ -23,7 +24,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="mt-auto">
           {product.description && <p className="mt-2 text-current text-sm line-clamp-2">{product.description}</p>}
 
-          <p className="mt-2 font-bold text-current text-lg">RSD {product.price?.toFixed(2)}</p>
+          <ProductPrice price={product.price} currency="EUR" />
           <RatingStars rate={product.rating.rate} count={product.rating.count} />
         </div>
       </div>
