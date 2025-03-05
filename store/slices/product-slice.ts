@@ -1,6 +1,6 @@
 import { getAllProducts } from "@/api/product";
 import { Product } from "@/types/product";
-import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "..";
 
 export const fetchProducts = createAsyncThunk("data/fetchData", async (_, { rejectWithValue }) => {
@@ -59,12 +59,20 @@ export const getProductsByCategory = (state: RootState, category: string) => {
   return state.products.items.filter((product) => product.category === category);
 };
 
-// This creates a memoized selector that will only recalculate when products or category changes
-export const makeSelectProductsByCategory = () => 
-  createSelector(
-    [(state: RootState) => state.products.items, (_: RootState, category: string) => category],
-    (products, category) => products.filter(product => product.category === category)
-  );
+export const getProductById = (state: RootState, productId: Product["id"]) => {
+  return state.products.items.find((product) => product.id === productId);
+};
 
-export const { clearState } = productSlice.actions
+export const getProductByName = (state: RootState, searchQuery: string) => {
+  // If empty query, return all products
+  if (!searchQuery.trim()) {
+    return state.products.items;
+  }
+
+  const query = searchQuery.toLocaleLowerCase().trim();
+
+  return state.products.items.filter((item) => item.title.toLocaleLowerCase().trim().includes(query));
+};
+
+export const { clearState } = productSlice.actions;
 export default productSlice.reducer;
