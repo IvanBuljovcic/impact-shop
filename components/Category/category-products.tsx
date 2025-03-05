@@ -1,8 +1,7 @@
 "use client";
 
 import { useAppSelector } from "@/store";
-import { makeSelectProductsByCategory } from "@/store/slices/product-slice";
-import { useMemo } from "react";
+import { getProductsByCategory } from "@/store/slices/product-slice";
 import ProductGrid from "../Product/product-grid";
 
 type CategoryProductsProps = {
@@ -10,8 +9,7 @@ type CategoryProductsProps = {
 };
 
 const CategoryProducts = ({ category }: CategoryProductsProps) => {
-  const selectProductsByCategory = useMemo(() => makeSelectProductsByCategory(), []);
-  const products = useAppSelector((state) => selectProductsByCategory(state, category));
+  const products = useAppSelector((state) => getProductsByCategory(state, category));
 
   if (!products.length) {
     return <h2>No products found.</h2>;
