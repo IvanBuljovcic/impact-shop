@@ -11,7 +11,7 @@ const Header = ({ className }: HeaderProps) => {
   const headerClass = cn("flex flex-wrap justify-between items-center col-span-8 px-4 py-2 bg-primary", className);
 
   return (
-    <header className={headerClass} data-testid="app-header">
+    <header className="bg-primary" data-testid="app-header">
       <div className="flex flex-wrap justify-between items-center gap-3 w-full">
         <Link
           href="/"
