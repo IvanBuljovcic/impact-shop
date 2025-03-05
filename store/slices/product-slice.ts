@@ -1,9 +1,11 @@
+import { getAllProducts } from "@/api/product";
 import { Product } from "@/types/product";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "..";
 
 export const fetchProducts = createAsyncThunk("data/fetchData", async (_, { rejectWithValue }) => {
   try {
-    const response = await fetch(`https://fakestoreapi.com/products`);
+    const response = await getAllProducts();
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
@@ -30,7 +32,9 @@ const initialState: ProductState = {
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    clearState: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -47,8 +51,9 @@ const productSlice = createSlice({
   },
 });
 
-export const getAllCategories = (state: { products: ProductState }) => [
+export const getAllCategories = (state: RootState) => [
   ...new Set(state.products.items.map((product) => product.category)),
 ];
 
+export const { clearState } = productSlice.actions
 export default productSlice.reducer;
