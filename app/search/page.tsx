@@ -1,13 +1,7 @@
 import SearchProducts from "@/components/Search/search-products";
 
-type SearchProps = {
-  searchParams: {
-    query: string;
-  };
-};
-
-const Search = async ({ searchParams }: SearchProps) => {
-  const { query } = await searchParams;
+const Search = async ({ params }: { params: Promise<{ query: string }> }) => {
+  const { query } = await params;
 
   return (
     <div className="flex flex-col items-center bg-gray-100 p-4 min-h-screen align-top">
