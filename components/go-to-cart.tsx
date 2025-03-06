@@ -14,9 +14,11 @@ const GoToCart = () => {
         data-testid="app-header__cart-link"
       >
         <span>Go to cart</span>
-        <span className="-top-1 -right-1 absolute bg-orange-500 m-0 p-0.5 rounded-full font-mono text-white text-sm text-center leading-tight">
-          {totalItems}
-        </span>
+        {!!totalItems && (
+          <span className="-top-1 -right-1 absolute bg-orange-500 m-0 p-0.5 rounded-full font-mono text-white text-sm text-center leading-tight">
+            {totalItems}
+          </span>
+        )}
       </Link>
     </div>
   );

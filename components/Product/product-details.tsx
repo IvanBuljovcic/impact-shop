@@ -47,7 +47,7 @@ const ProductDetails = ({ productId }: ProductDetailsProps) => {
         <div className="flex flex-row justify-start items-center gap-4">
           <h3 className="text-2xl">Categories:</h3>
           <Link
-            className="hover:bg-secondary-foreground p-2 border text-xl transition-colors"
+            className="hover:bg-secondary-foreground p-2 border text-xl whitespace-nowrap transition-colors"
             href={`/category/${product.category}`}
           >
             {product.category}
