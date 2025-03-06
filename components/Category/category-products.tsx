@@ -16,7 +16,7 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center md:items-start">
       <h2>Showing <b>{products.length}</b> products</h2>
       <ProductGrid products={products} />
     </div>

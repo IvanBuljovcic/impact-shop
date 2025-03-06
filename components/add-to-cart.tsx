@@ -41,7 +41,7 @@ const AddToCart = ({ product, showQuantity = false, title, isUpdate = false, qua
   const handleIncrement = () => setQuantity(_quantity + 1);
 
   return (
-    <div className="flex md:flex-row flex-col gap-4">
+    <div className="flex flex-row gap-4">
       {showQuantity && (
         <div className="flex flex-row gap-2">
           <Button disabled={_quantity < 1} onClick={handleDecrement}>

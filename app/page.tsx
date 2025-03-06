@@ -3,9 +3,13 @@ import Products from "@/components/Product/products";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center items-start">
-      <CategoryGrid />
-      <Products />
+    <div className="items-start grid grid-cols-1 md:grid-cols-8">
+      <aside className="col-span-2">
+        <CategoryGrid />
+      </aside>
+      <div className="col-span-6">
+        <Products />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import Header from "../header";
+import Header from "../Header/header";
 import Link from "next/link";
 
 vi.mock("next/form", () => ({

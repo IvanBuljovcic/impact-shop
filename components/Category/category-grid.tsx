@@ -16,7 +16,7 @@ const CategoryGrid = () => {
   }
 
   return (
-    <div className="flex justify-center items-center gap-4 p-4 w-full">
+    <div className="flex flex-row md:flex-col flex-wrap justify-start items-start gap-4 p-4 w-full">
       {categories?.length && categories.map((cat) => <CategoryCard key={cat} categorie={cat} />)}
     </div>
   );

@@ -19,24 +19,24 @@ const ProductDetails = ({ productId }: ProductDetailsProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-8 bg-white mx-auto p-8 w-full max-w-3/4">
+    <div className="flex flex-col gap-8 bg-white mx-auto p-4 md:p-8 w-full max-w-[90%] md:max-w-3/4">
       <header>
         <h1 className="text-primary text-4xl">{product.title}</h1>
       </header>
 
-      <div className="gap-4 grid grid-cols-3">
-        <div className="shadow-md">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
+        <div className="col-span-full md:col-span-1 shadow-md my-4 md:my-0 w-full">
           <ProductImage image={product.image} title={product.title} hasHover={false} />
         </div>
 
         <div className="flex flex-col col-span-2">
           <p className="text-lg">{product.description}</p>
 
-          <div className="mt-auto">
+          <div className="mt-4 md:mt-auto">
             <ProductPrice price={product.price} currency="EUR" />
             <RatingStars rate={product.rating.rate} count={product.rating.count} />
 
-            <div className="mt-2">
+            <div className="mt-4 md:mt-2">
               <AddToCart product={product} />
             </div>
           </div>

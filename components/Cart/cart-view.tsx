@@ -11,10 +11,12 @@ const CartView = () => {
   return (
     <div className="flex mb-8">
       {!cartItems.length && <h2 className="text-primary text-xl">Cart is empty</h2>}
-      <div className="gap-4 grid grid-cols-8">
+
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-8">
         <div className="col-span-6">
           <CartGrid products={cartItems} />
         </div>
+
         {!!cartItems?.length && (
           <div className="flex flex-col col-span-2 mb-8">
             <div className="bg-secondary-foreground shadow-lg px-8 py-4">
@@ -25,7 +27,7 @@ const CartView = () => {
                   <span>{item.product.price * item.quantity} EUR</span>
                 </div>
               ))}
-              <h3 className="mt-5 font-bold text-primary-foreground text-lg">Total price: {cartTotalPrice} EUR</h3>
+              <h3 className="mt-5 font-bold text-primary-foreground text-lg">Total price: {cartTotalPrice.toFixed(2)} EUR</h3>
             </div>
           </div>
         )}
