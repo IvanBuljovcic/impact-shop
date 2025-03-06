@@ -15,7 +15,12 @@ const CategoryProducts = ({ category }: CategoryProductsProps) => {
     return <h2>No products found.</h2>;
   }
 
-  return <ProductGrid products={products} />;
+  return (
+    <div>
+      <h2>Showing <b>{products.length}</b> products</h2>
+      <ProductGrid products={products} />
+    </div>
+  )
 };
 
 export default CategoryProducts;
