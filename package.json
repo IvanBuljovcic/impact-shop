@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
@@ -43,6 +44,7 @@
     "vitest": "^3.0.7"
   },
   "volta": {
-    "node": "20.17.0"
+    "node": "20.17.0",
+    "npm": "11.2.0"
   }
 }
