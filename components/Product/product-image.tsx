@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Product } from "@/types/product";
+import { cn } from "@/utils/classnames";
 
 // Tiny base64 placeholder for blur effect
 const PLACEHOLDER_BASE64 =
@@ -11,9 +12,10 @@ const PLACEHOLDER_BASE64 =
 type ProductImageProps = {
   image?: Product["image"];
   title?: Product["title"];
+  hasHover?: boolean;
 };
 
-const ProductImage = ({ image, title }: ProductImageProps) => {
+const ProductImage = ({ image, title, hasHover = true }: ProductImageProps) => {
   const [errorImage, setErrorImage] = useState(false);
   const errorImageUrl = "/no-image-placeholder.svg";
 
@@ -29,10 +31,14 @@ const ProductImage = ({ image, title }: ProductImageProps) => {
     return image;
   };
 
+  const imageClassName = cn("object-contain transition-all duration-300", {
+    "grayscale group-hover:grayscale-0 group-hover:scale-105": hasHover,
+  });
+
   return (
     <div className="relative w-full aspect-square overflow-hidden">
       <Image
-        className="group-hover:grayscale-0 object-contain group-hover:scale-105 transition-all duration-300"
+        className={imageClassName}
         src={imgUrl()}
         alt={title || "Product image"}
         fill

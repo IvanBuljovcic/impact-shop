@@ -11,7 +11,7 @@ const ProductPrice = ({ price, currency }: ProductPriceProps) => {
   }
 
   return (
-    <p className="mt-2 font-bold text-current text-lg">
+    <p className="font-bold text-current text-lg">
       {currency} {numericPrice?.toFixed(2)}
     </p>
   );
