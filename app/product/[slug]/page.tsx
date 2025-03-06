@@ -12,7 +12,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   return (
     <div className="flex flex-col justify-center gap-5 mx-auto mt-8 mb-8 md:px-4 w-full container">
       <div className="ml-4">
-      <GoBack />
+        <GoBack />
       </div>
 
       <Suspense fallback={<div>Loading products...</div>}>

@@ -8,21 +8,22 @@ export const fetchProducts = createAsyncThunk("data/fetchData", async (_, { reje
     const response = await getAllProducts();
 
     if (!response.ok) {
-      throw new Error("Failed to fetch data");
+      return rejectWithValue("Failed to fetch data");
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    return rejectWithValue(error);
+    return rejectWithValue(error instanceof Error ? error.message : "Unknown error");
   }
 });
 
-type ProductState = {
+export type ProductState = {
   items: Product[];
   error: string | null;
   status: "idle" | "loading" | "success" | "error";
 };
+
 const initialState: ProductState = {
   items: [] as Product[],
   status: "idle",
@@ -46,7 +47,7 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "error";
-        state.error = action.error.message || "An error occurred";
+        state.error = (action.payload as string) || action.error.message || "An error occurred";
       });
   },
 });
